@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "375420832044",
+    "firebase_url": "https://studio-9418e.firebaseio.com",
+    "project_id": "studio-9418e",
+    "storage_bucket": "studio-9418e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375420832044:android:c178ca96a53d5a53",
+        "android_client_info": {
+          "package_name": "net.pacee.studio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375420832044-0kgb3ftl2rv8f3gkd6jpcb74vt7qst0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ZSyYLUB2QXwirzQTO0A6QnZpe1cJDBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375420832044:android:c1bf86f9d708fdbb",
+        "android_client_info": {
+          "package_name": "net.pacee.exposition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375420832044-0kgb3ftl2rv8f3gkd6jpcb74vt7qst0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ZSyYLUB2QXwirzQTO0A6QnZpe1cJDBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
