@@ -17,6 +17,18 @@ import java.util.List;
 public class MainExpostionAdapter extends RecyclerView.Adapter<MainExpostionAdapter.ListExpostionViewHolder> {
     Context context;
     List<String> expositions;
+
+    MainExpostionListener listener;
+    public interface MainExpostionListener
+    {
+        public void getPosition(int pos);
+    }
+
+    public void setListener(MainExpostionListener mel)
+    {
+        listener = mel;
+    }
+
     public MainExpostionAdapter(Context ctx)
     {
         this.context = ctx;
@@ -31,6 +43,7 @@ public class MainExpostionAdapter extends RecyclerView.Adapter<MainExpostionAdap
     public void onBindViewHolder(ListExpostionViewHolder holder, int position) {
         String txt = expositions.get(position);
         holder.title.setText(txt);
+        holder.itemView.setTag(position);
     }
 
     @Override
@@ -61,7 +74,8 @@ public class MainExpostionAdapter extends RecyclerView.Adapter<MainExpostionAdap
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            Log.i("Liste element Clicked", "position clicked:"+position+" / value:"+expositions.get(position));
+           // Log.i("Liste element Clicked", "position clicked:"+position+" / value:"+expositions.get(position));
+            listener.getPosition(position);
         }
     }
 }
