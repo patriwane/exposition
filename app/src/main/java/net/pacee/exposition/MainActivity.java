@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
         myRef = database.getReference("EXPOSITION");
         //myRef.setValue("Hello, World!");
         list = new ArrayList<>();
+        mea.setExpositions(list);
         rv.setAdapter(mea);
         refreshData();
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -61,7 +62,10 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                list = Arrays.asList(dataSnapshot.getValue(String[].class));
+                for(DataSnapshot dt: dataSnapshot.getChildren())
+                {
+                    list.add(dt.child("title").getValue(String.class));
+                }
                 mea.setExpositions(list);
                 mea.notifyDataSetChanged();
             }

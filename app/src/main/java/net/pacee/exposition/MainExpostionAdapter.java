@@ -2,6 +2,7 @@ package net.pacee.exposition;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,13 +49,19 @@ public class MainExpostionAdapter extends RecyclerView.Adapter<MainExpostionAdap
         this.notifyDataSetChanged();
     }
 
-    public class ListExpostionViewHolder extends RecyclerView.ViewHolder {
+    public class ListExpostionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title;
         public ListExpostionViewHolder(View v)
         {
             super(v);
             title = (TextView)v.findViewById(R.id.main_rv_expostionTitle);
+            v.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Log.i("Liste element Clicked", "position clicked:"+position+" / value:"+expositions.get(position));
         }
     }
 }

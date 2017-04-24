@@ -3,10 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    >
+
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/main_rv_expostionTitle"
-    tools:text="name"/>
+    tools:text="name"
+    android:layout_margin="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b70606"
+            ></View>
+
 </LinearLayout>
