@@ -100,9 +100,13 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
                     @Override
                     public void onDismissed(Snackbar snackbar, int event) {
                         if (event == DISMISS_EVENT_TIMEOUT) {
-                            if(viewHolder.itemView.getTag()!=null) {
-                                Log.v("Main_swipeDeletable","tag:"+viewHolder.itemView.getTag());
+                            String key;
+                            if((key=viewHolder.itemView.getTag().toString())!=null) {
+                                Log.v("Main_swipeDeletable","deletation of element at position:"+key);
+                                //delete value
+                                myRef.child(listKeys.get(Integer.valueOf(key))).removeValue();
                                // viewHolder.itemView.getTag();
+
                             }
                             //
                         }
