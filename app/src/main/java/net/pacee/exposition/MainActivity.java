@@ -1,5 +1,6 @@
 package net.pacee.exposition;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
             @Override
             public void getPosition(int pos) {
                 Log.i("MainActivity_showKey",listKeys.get(pos));
+                Intent i = new Intent(MainActivity.this,ExpositionPlanning.class);
+                startActivity(i);
+
             }
         });
         rv.setAdapter(mea);
@@ -104,9 +108,10 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
                             if((key=viewHolder.itemView.getTag().toString())!=null) {
                                 Log.v("Main_swipeDeletable","deletation of element at position:"+key);
                                 //delete value
+
                                 myRef.child(listKeys.get(Integer.valueOf(key))).removeValue();
                                // viewHolder.itemView.getTag();
-
+                                refreshData();
                             }
                             //
                         }
@@ -155,14 +160,19 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
     {
         //on ne lit qu'une fois puis on se déconnecte
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            List<String> refreshedList = new ArrayList<String>();
+            List<String> refreshedListKey = new ArrayList<String>();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dt: dataSnapshot.getChildren())
                 {
-                    listKeys.add(dt.getKey());
+
+                    refreshedListKey.add(dt.getKey());
                  //   Log.i("MainActivity_Loading","key:"+dt.getKey());
-                    list.add(dt.child("title").getValue(String.class));
+                    refreshedList.add(dt.child("title").getValue(String.class));
                 }
+                listKeys = refreshedListKey;
+                list = refreshedList;
                 mea.setExpositions(list);
                 mea.notifyDataSetChanged();
             }
