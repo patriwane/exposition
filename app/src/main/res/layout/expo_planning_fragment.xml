@@ -10,7 +10,7 @@
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:id="@+id/et_expo_planning_fragment_title"
+        android:id="@+id/et_expo_planning_fragment_name"
         android:hint="title"
         android:layout_weight="0.07" />
 
@@ -20,14 +20,14 @@
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:id="@+id/et_expo_planning_fragment_emotion"
+        android:id="@+id/et_expo_planning_fragment_description"
         android:layout_weight="0.34"
         android:hint="pensées" />
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_expo_planning_fragment_seekBar"
+        android:id="@+id/et_expo_planning_fragment_cotation"
         android:max="10"
         android:progress="5"
         android:layout_weight="0.12" />

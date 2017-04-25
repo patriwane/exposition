@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements AddExpositionFrag
             public void getPosition(int pos) {
                 Log.i("MainActivity_showKey",listKeys.get(pos));
                 Intent i = new Intent(MainActivity.this,ExpositionPlanning.class);
+                i.putExtra("ID_PARENT",listKeys.get(pos));
                 startActivity(i);
 
             }

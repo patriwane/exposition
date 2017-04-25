@@ -7,9 +7,19 @@ package net.pacee.exposition.domain;
 public class Emotion {
     private String name;
     private int cotation;
+    private String description;
 
-    public Emotion(String name, int cotation) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Emotion(String name,String description, int cotation) {
         this.name = name;
+        this.description = description;
         this.cotation = cotation;
     }
 
