@@ -5,22 +5,38 @@ package net.pacee.exposition.domain;
  */
 
 public class Emotion {
+    private String parent;
     private String name;
     private int cotation;
     private String description;
 
-    public String getDescription() {
-        return description;
+
+    public Emotion() {
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Emotion(String name,String description, int cotation) {
+    public Emotion(String parent, String name, int cotation, String description) {
+        this.parent = parent;
         this.name = name;
-        this.description = description;
         this.cotation = cotation;
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Emotion{" +
+                "parent='" + parent + '\'' +
+                ", name='" + name + '\'' +
+                ", cotation=" + cotation +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
     }
 
     public String getName() {
@@ -37,5 +53,13 @@ public class Emotion {
 
     public void setCotation(int cotation) {
         this.cotation = cotation;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

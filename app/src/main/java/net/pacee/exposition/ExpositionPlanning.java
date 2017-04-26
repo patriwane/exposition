@@ -67,15 +67,19 @@ public class ExpositionPlanning extends AppCompatActivity implements AddEmotionF
 
     public void refreshData()
     {
+        Log.i("ExpositionPlanning","Data refreshed for key:"+key);
         //on ne lit qu'une fois puis on se déconnecte
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             List<Emotion> refreshedList = new ArrayList<>();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dt: dataSnapshot.getChildren())
                 {
-
-                    refreshedList.add(dt.child("emotion").getValue(Emotion.class));
+                    Log.i("ExpositionPlanning","Dnas onDataChange de firebase");
+                    Emotion em = dt.getValue(Emotion.class);
+                    //tester du retour de firebase 26-04-17
+                    Log.i("ExpositionPlanning",em.toString());
+                    refreshedList.add(em);
                 }
                 emotions = refreshedList;
                 pela.setExpositions(refreshedList);
@@ -96,15 +100,18 @@ public class ExpositionPlanning extends AppCompatActivity implements AddEmotionF
 
     @Override
     public void onDialogPositiveClick(Emotion emotion) {
+        Log.i("ExpositionPlanning", emotion.toString());
         pela.adExposition(emotion);
         DatabaseReference ref = myRef.push();
-        ref.child("ID_PARENT").setValue(key);
-        ref.child("emotion").setValue(emotion);
+
+        emotion.setParent(key);
+        ref.setValue(emotion);
         pela.notifyDataSetChanged();
+        refreshData();
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
+        Log.i("ExpositionPlanning","ok");
     }
 }

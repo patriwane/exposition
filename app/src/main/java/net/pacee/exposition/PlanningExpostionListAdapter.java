@@ -2,6 +2,7 @@ package net.pacee.exposition;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class PlanningExpostionListAdapter extends RecyclerView.Adapter<PlanningE
     @Override
     public void onBindViewHolder(ListExpostionViewHolder holder, int position) {
         Emotion ep = expositions.get(position);
+        Log.i("Adapter", ep.toString());
         holder.title.setText(ep.getName());
         holder.cotation.setText(ep.getCotation());
         holder.itemView.setTag(position);

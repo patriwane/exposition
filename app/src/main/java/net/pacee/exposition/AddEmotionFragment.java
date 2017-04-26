@@ -37,7 +37,7 @@ public class AddEmotionFragment extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View view= inflater.inflate(R.layout.details_planning_layout, null);
+        View view= inflater.inflate(R.layout.expo_planning_fragment, null);
         name = (EditText)view.findViewById(R.id.et_expo_planning_fragment_name);
         cotation = (SeekBar) view.findViewById(R.id.et_expo_planning_fragment_cotation);
         desctiption = (EditText) view.findViewById(R.id.et_expo_planning_fragment_description);
@@ -54,7 +54,7 @@ public class AddEmotionFragment extends DialogFragment {
                         int rating= cotation.getProgress();
                         if(!title.isEmpty() && !infos.isEmpty())
                         {
-                            mListener.onDialogPositiveClick(new Emotion(title,infos,rating));
+                            mListener.onDialogPositiveClick(new Emotion(null,title,rating,infos));
                         }
 
                     }
