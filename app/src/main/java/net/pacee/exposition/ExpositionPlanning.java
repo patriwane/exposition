@@ -40,7 +40,7 @@ public class ExpositionPlanning extends AppCompatActivity implements AddEmotionF
         if(bundle!=null)
             key = bundle.getString("ID_PARENT");
 
-        myRef = database.getReference("EXPOSITION_EMOTIONS");
+        myRef = database.getReference("EXPOSITION_EMOTIONS").child(key);
         setContentView(R.layout.details_planning_layout);
         rv = (RecyclerView) findViewById(R.id.details_rv_listPlannings);
         pela = new PlanningExpostionListAdapter(this);
@@ -69,7 +69,7 @@ public class ExpositionPlanning extends AppCompatActivity implements AddEmotionF
     {
         Log.i("ExpositionPlanning","Data refreshed for key:"+key);
         //on ne lit qu'une fois puis on se déconnecte
-        myRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             List<Emotion> refreshedList = new ArrayList<>();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -88,7 +88,7 @@ public class ExpositionPlanning extends AppCompatActivity implements AddEmotionF
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("ExpositionPlanning","error");
             }
         });
     }
